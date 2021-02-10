@@ -53,6 +53,8 @@ class Gpio {
                 RCC->AHB1ENR  |= RCC_AHB1ENR_GPIOCEN;
             if (port == GPIOD)
                 RCC->AHB1ENR  |= RCC_AHB1ENR_GPIODEN;
+            if (port == GPIOH)
+                RCC->AHB1ENR  |= RCC_AHB1ENR_GPIOHEN;
 
             uint32_t temp1 = 0, temp2 = 0;
             ((temp1 |= (0b11 << (2*pins))), ... );
