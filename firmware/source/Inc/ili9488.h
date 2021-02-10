@@ -94,5 +94,6 @@ void SetAddrWindow (uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1);
 void Write16BitColor (uint16_t color);
 void DrawPixel (int16_t x, int16_t y, uint16_t color);
 void DrawFastVLine (int16_t x, int16_t y, int16_t h, uint16_t color);
+void DrawFill (uint16_t xsta, uint16_t ysta, uint16_t xend, uint16_t yend, uint16_t color);
 
 #endif /* __MAIN_H */

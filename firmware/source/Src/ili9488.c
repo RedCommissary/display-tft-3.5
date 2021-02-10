@@ -2,27 +2,27 @@
 extern SPI_HandleTypeDef hspi1;
 
 void Reset_Active() {
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_RESET);
-}
-
-void Reset_Idle() {
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_SET);
-}
-
-void DataDisplay() {
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
-}
-
-void CommandDisplay() {
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
-}
-
-void CS_Active() {
     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
 }
 
-void CS_Idle() {
+void Reset_Idle() {
     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
+}
+
+void DataDisplay() {
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
+}
+
+void CommandDisplay() {
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+}
+
+void CS_Active() {
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_RESET);
+}
+
+void CS_Idle() {
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_SET);
 }
 
 void TFT_Reset() {
@@ -196,3 +196,12 @@ void DrawFastVLine (int16_t x, int16_t y, int16_t h, uint16_t color) {
 		Write16BitColor(color);
 	}
 }
+
+void DrawFill (uint16_t xsta, uint16_t ysta, uint16_t xend, uint16_t yend, uint16_t color) {          
+	uint16_t i,j;
+	SetAddrWindow(xsta,ysta,xend,yend);      
+	for(i=ysta;i<=yend;i++)
+	{													   	 	
+		for(j=xsta;j<=xend;j++)Write16BitColor(color);	    
+	} 					  	    
+}  
