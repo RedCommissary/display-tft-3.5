@@ -23,16 +23,21 @@ namespace BSP {
     class Periphery {
         public:
             static void Init();
-
+            struct Clock {
+                static void Init();
+            };
             struct Led {
                 enum class Status {on, off, toggle};
                 static void Yellow (Status status);
                 static void Green (Status status);
             };
-
             struct Button {
                 static void Init();
                 static void ResetFlag();
+            };
+            struct Buzzer {
+                static void Init (uint16_t frequence);
+                static void SetDuty (uint16_t duty);
             };
     };
 }
