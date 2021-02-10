@@ -37,7 +37,9 @@ library/cmsis/src/system_stm32f4xx.c
 
 CXX_SOURCES = \
 system/startup/startupF401.cpp \
-application/src/main.cpp
+application/src/main.cpp \
+library/bsp/src/Pinout.cpp \
+library/bsp/src/Periphery.cpp
 
 #######################################
 # Macros for GCC
