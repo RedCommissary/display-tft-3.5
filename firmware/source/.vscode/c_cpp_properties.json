@@ -8,15 +8,12 @@
                 "C:/Software/EmbeddedGCC/arm_gcc/arm-none-eabi/include/sys/",
                 "C:/Software/EmbeddedGCC/arm_gcc/lib/**",
 
-                "${workspaceRoot}\\Drivers\\CMSIS\\**",
-                "${workspaceRoot}\\Drivers\\STM32F4xx_HAL_Driver\\**",
-
-				"${workspaceRoot}\\Drivers\\**",
-				"${workspaceRoot}\\Src\\**",
-                "${workspaceRoot}\\Inc\\**"
+                "${workspaceRoot}\\application\\**",
+                "${workspaceRoot}\\library\\bsp\\**",
+                "${workspaceRoot}\\library\\cmsis\\**",
+                "${workspaceRoot}\\system\\startup\\**"
             ],
             "defines": [
-				"USE_HAL_DRIVER",
 				"STM32F401xC",
 				"M4",
 				"GCC_ARMCM4"

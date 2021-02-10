@@ -4,7 +4,7 @@
         {
             "name": "Cortex Debug",
             "cwd": "${workspaceRoot}",
-            "executable": "./build/test_ili9488.elf",
+            "executable": "./build/hmi-display.elf",
             "svdFile": "./system/jlink/STM32F401.svd",
             "request": "launch",
             "type": "cortex-debug",
