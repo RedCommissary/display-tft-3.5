@@ -1,9 +1,9 @@
 /********************************************************************************
- * class        Board pinout                                                    *
+ * class        Settings SPI for MCU                                            *
  *                                                                              *
- * file         Pinout.h                                                        *
+ * file         Spi.h                                                           *
  * author       @RedCommissary                                                  *
- * date         10.02.2021                                                      *
+ * date         13.02.2021                                                      *
  *                                                                              *
  ********************************************************************************/
 
@@ -13,14 +13,27 @@
  * Include 
  ********************************************************************************/
 
-#include <stdint.h>
-
 #include "Gpio.h"
 
 /********************************************************************************
- * Class Pinout
+ * Class SPI
  ********************************************************************************/
-class Pinout {
+class Spi {
     public:
-        static void Init();
+        static void Init() {
+
+        }
+
+        static void ChipSelect (bool status) {
+            if (status) {Gpio::Reset<1>(GPIOB);}
+            if (!status) {Gpio::Set<1>(GPIOB);}
+        }
+
+        static void SendByte (uint8_t data) {
+
+        }
+
+        static void SendArray (uint8_t* data, uint16_t size) {
+
+        }
 };

@@ -1,7 +1,7 @@
 /********************************************************************************
  * project     HMI panel of the MCU STM32F401CCU6 and TFT ILI9488 (SPI)         *
  *                                                                              *
- * file        main.h                                                    *
+ * file        main.cpp                                                         *
  * author      @RedCommissary                                                   *
  * date        10.02.2021                                                       *
  *                                                                              *
@@ -18,7 +18,8 @@
  ********************************************************************************/
 
 int main() {
-    BSP::Periphery::Init();
+    Periphery::Init();
+    Application::Init();
 
     while(1){}
 }

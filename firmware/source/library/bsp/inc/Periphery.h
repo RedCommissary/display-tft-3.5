@@ -13,31 +13,21 @@
  * Include 
  ********************************************************************************/
 
-#include "Pinout.h"
 #include "startupF401.h"
+
+#include "Pinout.h"
+#include "Clock.h"
+#include "Delay.h"
+
+#include "Led.h"
+#include "Buzzer.h"
+#include "Button.h"
+#include "Spi.h"
 
 /********************************************************************************
  * Class Periphery
  ********************************************************************************/
-namespace BSP {
-    class Periphery {
-        public:
-            static void Init();
-            struct Clock {
-                static void Init();
-            };
-            struct Led {
-                enum class Status {on, off, toggle};
-                static void Yellow (Status status);
-                static void Green (Status status);
-            };
-            struct Button {
-                static void Init();
-                static void ResetFlag();
-            };
-            struct Buzzer {
-                static void Init (uint16_t frequence);
-                static void SetDuty (uint16_t duty);
-            };
-    };
-}
+class Periphery {
+    public:
+        static void Init();
+};

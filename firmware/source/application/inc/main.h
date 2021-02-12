@@ -13,8 +13,5 @@
  * Include 
  ********************************************************************************/
 
-#include <stdint.h>
-
-#include "stm32f4xx.h"
-
 #include "Periphery.h"
+#include "Application.h"
