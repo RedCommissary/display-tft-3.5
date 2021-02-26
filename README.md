@@ -1,2 +1,13 @@
-# display-tft-3.5
-HMI panel on the TFT 3.5" display with UART interface
+## Информационная панель на базе TFT ILI9488 3.5"
+
+Простая HMI панель на базе микроконтроллера STM32 и TFT дисплея с диагональю 3.5", предназначенная для работы в составе различных радиоэлектронных устройствах для вывода различной графической информации. На плате так же установлен пьезокерамический узлучатель (buzzer) и имеется возможность подключить внешнюю клавиатуру через выведенные на разъем I/O, реализованы цепи аппаратного подавления дребезга контактов.
+
+![Вид сверху](https://habrastorage.org/webt/-g/xz/zm/-gxzzmjlg4cuzcq0oq-8p7ow-em.jpeg)
+
+>
+
+![Вид снизу](https://habrastorage.org/webt/lb/vc/d7/lbvcd7zb2vlxedzb__mfl_xjjvc.jpeg)
+
+>
+
+![Клавиатура](https://habrastorage.org/webt/jl/ny/mg/jlnymgmry8pawfa_ts6trst6z2o.jpeg)
