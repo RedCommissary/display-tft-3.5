@@ -20,6 +20,10 @@
 int main() {
     Periphery::Init();
     Application::Init();
-
-    while(1){}
+    // 1011 0101   0110 0011   0000 1101
+    //uint8_t TxBuffer[3] = {0xB5, 0x63, 0x0D};
+    while(1){
+        Spi::SendByte(0xB5);
+        Delay::Set(3000);
+    }
 }

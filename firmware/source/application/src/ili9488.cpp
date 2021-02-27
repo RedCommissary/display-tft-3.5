@@ -19,28 +19,21 @@ void TFT::SetMode (Mode mode) {
 }
 
 void TFT::SendCommand (uint8_t command) {
-    Spi::ChipSelect(true);
     SetMode(Mode::Command);
     Spi::SendByte(command);
-    Spi::ChipSelect(false);
 }
 
 void TFT::SendData (uint8_t data) {
-    Spi::ChipSelect(true);
     SetMode(Mode::Data);
     Spi::SendByte(data);
-    Spi::ChipSelect(false);
 }
 
 void TFT::SendDataBuffer (uint8_t* buffer, uint16_t size) {
-    Spi::ChipSelect(true);
     SetMode(Mode::Data);
     Spi::SendArray(buffer, size);
-    Spi::ChipSelect(false);
 }
 
 void TFT::Init() {
-    Spi::ChipSelect(true);
     Reset();
 
     SendCommand(Command::SWRESET);
@@ -123,8 +116,6 @@ void TFT::Init() {
     SendCommand(Command::SLPOUT);
     Delay::Set(120);
     SendCommand(Command::DISPON);
-
-    Spi::ChipSelect(false);
 }
 
 void TFT::SetAddressWindow (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd) {

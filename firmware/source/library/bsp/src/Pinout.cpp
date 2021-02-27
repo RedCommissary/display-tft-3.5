@@ -35,7 +35,7 @@ void Pinout::Init() {
  ******************************************/
     Gpio::Init<5,6,7>(GPIOA, Gpio::Mode::outputAF, Gpio::Type::PP, Gpio::Speed::medium, Gpio::Pupd::noPull, Gpio::AF::af5);
     Gpio::Init<0,1>(GPIOB, Gpio::Mode::output);
-    Gpio::Init<4>(GPIOA, Gpio::Mode::output);
+    Gpio::Init<3,4>(GPIOA, Gpio::Mode::output);
 
     Gpio::Set<1>(GPIOB);
 

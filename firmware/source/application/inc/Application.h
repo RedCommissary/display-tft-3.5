@@ -19,12 +19,12 @@
 #include "Buzzer.h"
 #include "Button.h"
 
+#include "ili9488.h"
+
 /********************************************************************************
  * Class Application
  ********************************************************************************/
 class Application {
     public:
-        static void Init() {
-            
-        }
+        static void Init();
 };
