@@ -2,11 +2,11 @@
     "configurations": [
         {
             "name": "arm_c_cpp_properties",
-            "compilerPath": "C:/Software/EmbeddedGCC/arm_gcc/bin/arm-none-eabi-gcc.exe",
+            "compilerPath": "C:/devs/toolchain/arm-none-eabi-gcc/bin/arm-none-eabi-gcc.exe",
             "includePath": [
-                "C:/Software/EmbeddedGCC/arm_gcc/arm-none-eabi/include",
-                "C:/Software/EmbeddedGCC/arm_gcc/arm-none-eabi/include/sys/",
-                "C:/Software/EmbeddedGCC/arm_gcc/lib/**",
+                "C:/devs/toolchain/arm-none-eabi-gcc/arm-none-eabi/include",
+                "C:/devs/toolchain/arm-none-eabi-gcc/arm-none-eabi/include/sys/",
+                "C:/devs/toolchain/arm-none-eabi-gcc/lib/**",
 
                 "${workspaceRoot}\\application\\**",
                 "${workspaceRoot}\\library\\bsp\\**",
