@@ -23,31 +23,30 @@ class Spi {
         static void Init() {
             RCC->APB2ENR |= RCC_APB2ENR_SPI1EN;
 
-            SPI1->CR1 |= SPI_CR1_BR_0 | SPI_CR1_BR_1;   // Baud rate = Fpclk/16
-            SPI1->CR1 &= ~SPI_CR1_DFF;                  // 8 bit data
-            SPI1->CR1 &= ~SPI_CR1_BIDIMODE;             // 2-line data mode
-            SPI1->CR1 &= ~SPI_CR1_CPOL;                 // Polarity cls signal CPOL = 0;
-            SPI1->CR1 &= ~SPI_CR1_CPHA;                 // Phase cls signal    CPHA = 0;
+            SPI1->CR1 = 0;
+            SPI1->CR1 |= SPI_CR1_MSTR;                  // Mode Master 
             SPI1->CR1 |= SPI_CR1_SSM | SPI_CR1_SSI;     // Software slave management & Internal slave select
-            SPI1->CR1 &= ~SPI_CR1_LSBFIRST;             // MSB will be first
-            SPI1->CR1 |= SPI_CR1_MSTR;                  // Mode Master
             SPI1->CR1 |= SPI_CR1_SPE;                   // Enable SPI1
         }
 
-        static void ChipSelect (bool status) {
-            if (status) {Gpio::Reset<1>(GPIOB);}
-            if (status) {Gpio::Set<1>(GPIOB);}
+        static void ChipSelectActive (bool status) {
+            if (status)
+                Gpio::Reset<1>(GPIOB);
+                else
+                Gpio::Set<1>(GPIOB);
         }
 
         static void SendByte (uint8_t data) {
+            ChipSelectActive(true);
             while(!(SPI1->SR & SPI_SR_TXE));
-            ChipSelect(true);
             SPI1->DR = data;
-            ChipSelect(false);
+            while(!(SPI1->SR & SPI_SR_RXNE));
+            while(SPI1->SR & SPI_SR_BSY);
+            ChipSelectActive(false);
         }
 
         static void SendArray (uint8_t *buffer, uint16_t size) {
-            ChipSelect(true);
+            ChipSelectActive(true);
 
             uint16_t txDataNeed = size;
             uint8_t *txDataPointer = buffer;
@@ -56,8 +55,10 @@ class Spi {
             for (; txDataCounter < txDataNeed; txDataCounter++) {
                 while(!(SPI1->SR & SPI_SR_TXE));
                 SPI1->DR = *txDataPointer;
+                while(!(SPI1->SR & SPI_SR_RXNE));
                 txDataPointer++;
             }
-            ChipSelect(false);
+            while(SPI1->SR & SPI_SR_BSY);
+            ChipSelectActive(false);
         }
 };
