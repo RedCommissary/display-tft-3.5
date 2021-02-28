@@ -34,10 +34,8 @@ void Pinout::Init() {
  * TFT display. SPI + IO
  ******************************************/
     Gpio::Init<5,6,7>(GPIOA, Gpio::Mode::outputAF, Gpio::Type::PP, Gpio::Speed::medium, Gpio::Pupd::noPull, Gpio::AF::af5);
-    Gpio::Init<0,1>(GPIOB, Gpio::Mode::output);
-    Gpio::Init<3,4>(GPIOA, Gpio::Mode::output);
-
-    Gpio::Set<1>(GPIOB);
+    Gpio::Init<0,1>(GPIOB, Gpio::Mode::output, Gpio::Type::PP);
+    Gpio::Init<3,4>(GPIOA, Gpio::Mode::output, Gpio::Type::PP);
 
 /******************************************
  * USART1
