@@ -7,10 +7,15 @@
 /********************************************************************************
  * Method TFT ILI9488
  ********************************************************************************/
+void TFT::LedEnable (bool status) {
+    if (status) {Gpio::Set<3>(GPIOA);}
+    if (!status) {Gpio::Reset<3>(GPIOA);}
+}
+
 void TFT::Reset() {
-    Gpio::Set<4>(GPIOA);
-    Delay::Set(10);
     Gpio::Reset<4>(GPIOA);
+    Delay::Set(10);
+    Gpio::Set<4>(GPIOA);
 }
 
 void TFT::SetMode (Mode mode) {
@@ -97,7 +102,7 @@ void TFT::Init() {
     SendCommand(Command::FRMCTR1);
     SendData(0xA0);
 
-    SendCommand(Command::INVCTR);    
+    SendCommand(Command::INVCTR);   
     SendData(0x02);
 
     SendCommand(Command::DFUNCTR); 
@@ -134,10 +139,11 @@ void TFT::SetAddressWindow (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uin
     SendCommand(Command::RAMWR);    // Write to RAM   
 }
 
-void TFT::WriteColor (uint16_t color) {
-	uint8_t red = (color & 0xF800) >> 11;
-	uint8_t green = (color & 0x07E0) >> 5;
-	uint8_t blue = color & 0x001F;
+void TFT::WriteColor (Color color) {
+    uint16_t bufferColor = static_cast<uint16_t>(color);
+	uint8_t red = (bufferColor & 0xF800) >> 11;
+	uint8_t green = (bufferColor & 0x07E0) >> 5;
+	uint8_t blue = bufferColor & 0x001F;
 
 	red = (red * 255) / 31;
 	green = (green * 255) / 63;
@@ -148,13 +154,13 @@ void TFT::WriteColor (uint16_t color) {
     SendData(blue);
 }
 
-void TFT::DrawPixel (uint16_t x, uint16_t y, uint16_t color) {
+void TFT::DrawPixel (uint16_t x, uint16_t y, Color color) {
     if((x < 0) ||(x >= 480) || (y < 0) || (y >= 320)) return;
 	SetAddressWindow (x, y, x + 1, y + 1);
 	WriteColor(color);
 }
 
-void TFT::DrawLine (uint16_t xStart, uint16_t yStart, uint16_t length, uint16_t color) {
+void TFT::DrawLine (uint16_t xStart, uint16_t yStart, uint16_t length, Color color) {
     if((yStart + length - 1) >= 480) {length = 480 - yStart;}
 	SetAddressWindow(xStart, yStart, xStart, yStart + length - 1);
 	while (length--) {
@@ -162,7 +168,7 @@ void TFT::DrawLine (uint16_t xStart, uint16_t yStart, uint16_t length, uint16_t 
     }
 }
 
-void TFT::DrawFill (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd, uint16_t color) {
+void TFT::DrawFill (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd, Color color) {
 	uint16_t i,j;
 	SetAddressWindow(xStart ,yStart, xEnd, yEnd);      
 	for (i = yStart; i <= yEnd; i++) {													   	 	

@@ -97,6 +97,7 @@ class TFT {
     public:
         static void Init();
         static void Reset();
+        static void LedEnable (bool status);
         static void SetMode (Mode mode);
         static void SendData (uint8_t data);
         static void SendDataBuffer (uint8_t* buffer, uint16_t size);
@@ -105,9 +106,9 @@ class TFT {
             SendCommand(static_cast<uint8_t>(command));
         }
         static void SetAddressWindow (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd);
-        static void WriteColor (uint16_t color);
-        static void DrawPixel (uint16_t x, uint16_t y, uint16_t color);
-        static void DrawLine (uint16_t xStart, uint16_t yStart, uint16_t length, uint16_t color);
-        static void DrawFill (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd, uint16_t color);
+        static void WriteColor (Color color);
+        static void DrawPixel (uint16_t x, uint16_t y, Color color);
+        static void DrawLine (uint16_t xStart, uint16_t yStart, uint16_t length, Color color);
+        static void DrawFill (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd, Color color);
  
 };
