@@ -1,9 +1,9 @@
 /********************************************************************************
- * class        Settings external button of keyboard                            *
+ * class        Segnment font, H = 24 pixel			                            *
  *                                                                              *
- * file         Button.h                                                       *
+ * file         fontSegment24.h                                                 *
  * author       @RedCommissary                                                  *
- * date         12.02.2021                                                      *
+ * date         03.03.2021                                                      *
  *                                                                              *
  ********************************************************************************/
 
@@ -19,22 +19,22 @@
  * Type
  ********************************************************************************/
 
-typedef struct {
+struct tImage {
 	const uint8_t *buffChar;
 	uint16_t widthChar;
 	uint16_t heightChar;
 	uint16_t sizeChar;
-} tImage;
+};
 
-typedef struct {
+struct tChar {
 	uint16_t code;
 	const tImage *image;
-} tChar;
+};
 
-typedef struct {
+struct typeFont {
 	uint16_t length;
 	const tChar *chars;
-} typeFont;
+};
 
 /********************************************************************************
  * Font
@@ -1366,5 +1366,5 @@ static const tChar SevenSegment_low_array[] = {
 /***********************************************************************************************************************/
 /***********************************************************************************************************************/
 
-const typeFont SevenSegment_low = {95, SevenSegment_low_array};
+const typeFont SevenSegment24 = {95, SevenSegment_low_array};
 
