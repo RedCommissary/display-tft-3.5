@@ -1,9 +1,9 @@
 /********************************************************************************
- * class        Application HMI with TFT ILI9488 controller                     *
+ * class        TFT display library                                             *
  *                                                                              *
- * file         Application.h                                                   *
+ * file         Display.h                                                       *
  * author       @RedCommissary                                                  *
- * date         13.02.2021                                                      *
+ * date         01.03.2021                                                      *
  *                                                                              *
  ********************************************************************************/
 
@@ -12,18 +12,23 @@
 /********************************************************************************
  * Include 
  ********************************************************************************/
+#include "Delay.h"
 
-#include "startupF401.h"
-
-#include "Led.h"
-#include "Buzzer.h"
-#include "Button.h"
-#include "Display.h"
+#include "ili9488.h"
+#include "Color.h"
 
 /********************************************************************************
- * Class Application
+ * Class Display
  ********************************************************************************/
-class Application {
+class Display {
     public:
-        static void Init();
+        void Init();
+        void DrawPixel(uint16_t x, uint16_t y, uint16_t color);
+        void DrawLine (uint16_t xStart, uint16_t yStart, uint16_t length, uint16_t color);
+        void DrawFill (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd, uint16_t color);
+        void Background (uint16_t color);
+    
+    private:
+        static constexpr uint16_t width = 480;
+        static constexpr uint16_t height = 320;
 };

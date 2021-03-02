@@ -42,7 +42,8 @@ application/src/Application.cpp \
 library/bsp/src/Pinout.cpp \
 library/bsp/src/Periphery.cpp \
 library/bsp/src/Delay.cpp \
-application/src/ili9488.cpp 
+library/drivers/ili9488/ili9488.cpp \
+application/src/Display.cpp
 
 #######################################
 # Macros for GCC
@@ -54,7 +55,11 @@ C_INCLUDES =  \
 system/startup/ \
 application/inc \
 library/cmsis/inc \
-library/bsp/inc
+library/bsp/inc \
+library/drivers/ili9488 \
+library/gui/color \
+library/gui/font \
+library/gui/widget
  
 #######################################
 # Flags

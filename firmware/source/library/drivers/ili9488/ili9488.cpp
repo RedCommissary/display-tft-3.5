@@ -7,38 +7,38 @@
 /********************************************************************************
  * Method TFT ILI9488
  ********************************************************************************/
-void TFT::LedEnable (bool status) {
+void ILI9488::LedEnable (bool status) {
     if (status) {Gpio::Set<3>(GPIOA);}
     if (!status) {Gpio::Reset<3>(GPIOA);}
 }
 
-void TFT::Reset() {
+void ILI9488::Reset() {
     Gpio::Reset<4>(GPIOA);
     Delay::Set(10);
     Gpio::Set<4>(GPIOA);
 }
 
-void TFT::SetMode (Mode mode) {
+void ILI9488::SetMode (Mode mode) {
     if (mode == Mode::Data) {Gpio::Set<0>(GPIOB);}
     if (mode == Mode::Command) {Gpio::Reset<0>(GPIOB);}
 }
 
-void TFT::SendCommand (uint8_t command) {
+void ILI9488::SendCommand (uint8_t command) {
     SetMode(Mode::Command);
     Spi::SendByte(command);
 }
 
-void TFT::SendData (uint8_t data) {
+void ILI9488::SendData (uint8_t data) {
     SetMode(Mode::Data);
     Spi::SendByte(data);
 }
 
-void TFT::SendDataBuffer (uint8_t* buffer, uint16_t size) {
+void ILI9488::SendDataBuffer (uint8_t* buffer, uint16_t size) {
     SetMode(Mode::Data);
     Spi::SendArray(buffer, size);
 }
 
-void TFT::Init() {
+void ILI9488::Init() {
     Reset();
 
     SendCommand(Command::SWRESET);
@@ -123,7 +123,7 @@ void TFT::Init() {
     SendCommand(Command::DISPON);
 }
 
-void TFT::SetAddressWindow (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd) {
+void ILI9488::SetAddressWindow (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd) {
     SendCommand(Command::CASET);    // Column address set
     SendData(xStart >> 8);
     SendData(xStart & 0xFF);
@@ -139,7 +139,7 @@ void TFT::SetAddressWindow (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uin
     SendCommand(Command::RAMWR);    // Write to RAM   
 }
 
-void TFT::WriteColor (Color color) {
+void ILI9488::WriteColor (uint16_t color) {
     uint16_t bufferColor = static_cast<uint16_t>(color);
 	uint8_t red = (bufferColor & 0xF800) >> 11;
 	uint8_t green = (bufferColor & 0x07E0) >> 5;
@@ -154,13 +154,13 @@ void TFT::WriteColor (Color color) {
     SendData(blue);
 }
 
-void TFT::DrawPixel (uint16_t x, uint16_t y, Color color) {
+void ILI9488::DrawPixel (uint16_t x, uint16_t y, uint16_t color) {
     if((x < 0) ||(x >= 480) || (y < 0) || (y >= 320)) return;
 	SetAddressWindow (x, y, x + 1, y + 1);
 	WriteColor(color);
 }
 
-void TFT::DrawLine (uint16_t xStart, uint16_t yStart, uint16_t length, Color color) {
+void ILI9488::DrawLine (uint16_t xStart, uint16_t yStart, uint16_t length, uint16_t color) {
     if((yStart + length - 1) >= 480) {length = 480 - yStart;}
 	SetAddressWindow(xStart, yStart, xStart, yStart + length - 1);
 	while (length--) {
@@ -168,7 +168,7 @@ void TFT::DrawLine (uint16_t xStart, uint16_t yStart, uint16_t length, Color col
     }
 }
 
-void TFT::DrawFill (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd, Color color) {
+void ILI9488::DrawFill (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd, uint16_t color) {
 	uint16_t i,j;
 	SetAddressWindow(xStart ,yStart, xEnd, yEnd);      
 	for (i = yStart; i <= yEnd; i++) {													   	 	

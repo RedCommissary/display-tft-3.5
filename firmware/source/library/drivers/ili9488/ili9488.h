@@ -19,29 +19,8 @@
 /********************************************************************************
  * Class TFT ILI9488
  ********************************************************************************/
-class TFT {
+class ILI9488 {
     public:
-        enum class Color:int {
-            Black = 0x0000,
-            Navy = 0x000F,
-            DarkGreen = 0x03E0,
-            DarkCyan = 0x03EF,
-            Maroon = 0x7800,
-            Purple = 0x780F,
-            Olive = 0x7BE0,
-            LightGrey = 0xC618,
-            DarkGrey = 0x7BEF,
-            Blue = 0x001F,
-            Green = 0x07E0,
-            Cyan = 0x07FF,
-            Red = 0xF800,
-            Magenta = 0xF81F,
-            Yellow = 0xFFE0,
-            White = 0xFFFF,
-            Oragne = 0xFD20,
-            GreenYellow = 0xAFE5,
-            Pink = 0xF81F
-        };
         enum class Mode {
             Data, Command
         };
@@ -102,13 +81,13 @@ class TFT {
         static void SendData (uint8_t data);
         static void SendDataBuffer (uint8_t* buffer, uint16_t size);
         static void SendCommand(uint8_t command);
-        static void inline SendCommand(TFT::Command command) {
+        static void inline SendCommand(ILI9488::Command command) {
             SendCommand(static_cast<uint8_t>(command));
         }
         static void SetAddressWindow (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd);
-        static void WriteColor (Color color);
-        static void DrawPixel (uint16_t x, uint16_t y, Color color);
-        static void DrawLine (uint16_t xStart, uint16_t yStart, uint16_t length, Color color);
-        static void DrawFill (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd, Color color);
+        static void WriteColor (uint16_t color);
+        static void DrawPixel (uint16_t x, uint16_t y, uint16_t color);
+        static void DrawLine (uint16_t xStart, uint16_t yStart, uint16_t length, uint16_t color);
+        static void DrawFill (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd, uint16_t color);
  
 };

@@ -11,6 +11,8 @@
                 "${workspaceRoot}\\application\\**",
                 "${workspaceRoot}\\library\\bsp\\**",
                 "${workspaceRoot}\\library\\cmsis\\**",
+                "${workspaceRoot}\\library\\drivers\\**",
+                "${workspaceRoot}\\library\\gui\\**",
                 "${workspaceRoot}\\system\\startup\\**"
             ],
             "defines": [
