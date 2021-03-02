@@ -39,7 +39,7 @@ CXX_SOURCES = \
 system/startup/startupF401.cpp \
 application/src/main.cpp \
 application/src/Application.cpp \
-library/bsp/src/Delay.cpp \
+library/system/Delay.cpp \
 library/drivers/ili9488/ili9488.cpp \
 application/src/Display.cpp
 
@@ -53,11 +53,12 @@ C_INCLUDES =  \
 system/startup/ \
 application/inc \
 library/cmsis/inc \
-library/bsp/inc \
+library/bsp \
 library/drivers/ili9488 \
 library/gui/color \
 library/gui/font \
-library/gui/widget
+library/gui/widget \
+library/system
  
 #######################################
 # Flags

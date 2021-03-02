@@ -13,6 +13,7 @@
                 "${workspaceRoot}\\library\\cmsis\\**",
                 "${workspaceRoot}\\library\\drivers\\**",
                 "${workspaceRoot}\\library\\gui\\**",
+                "${workspaceRoot}\\library\\system\\**",
                 "${workspaceRoot}\\system\\startup\\**"
             ],
             "defines": [
