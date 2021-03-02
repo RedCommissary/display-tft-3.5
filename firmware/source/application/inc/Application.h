@@ -15,6 +15,9 @@
 
 #include "startupF401.h"
 
+#include "Clock.h"
+#include "Delay.h"
+
 #include "Led.h"
 #include "Buzzer.h"
 #include "Button.h"

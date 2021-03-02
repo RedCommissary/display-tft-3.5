@@ -12,9 +12,15 @@ Display TFT;
  * Methods class 
  ********************************************************************************/
 void Application::Init() {
+    Clock::Init();
+    Delay::Init();
+    Led::Init();
+    Button::Init();
+    Buzzer::Init(1000);
+
     TFT.Init();
-    TFT.Background(Color::Yellow);
-    ILI9488::LedEnable(true);
+    TFT.Background(Color::GreenYellow);
+    TFT.SetBrightness(80);
 }
 /********************************************************************************
  * Interrupt

@@ -16,6 +16,7 @@
 
 #include "ili9488.h"
 #include "Color.h"
+#include "Backlight.h"
 
 /********************************************************************************
  * Class Display
@@ -23,6 +24,8 @@
 class Display {
     public:
         void Init();
+        void SetBrightness(uint16_t level);
+        void BacklightDisable();
         void DrawPixel (uint16_t x, uint16_t y, uint16_t color);
         void DrawLine (uint16_t xStart, uint16_t yStart, uint16_t length, uint16_t color);
         void DrawFill (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd, uint16_t color);

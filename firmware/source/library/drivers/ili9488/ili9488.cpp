@@ -16,11 +16,6 @@ void ILI9488::InitPort() {
     Gpio::Init<3,4>(GPIOA, Gpio::Mode::output, Gpio::Type::PP);
 }
 
-void ILI9488::LedEnable (bool status) {
-    if (status) {Gpio::Set<3>(GPIOA);}
-    if (!status) {Gpio::Reset<3>(GPIOA);}
-}
-
 void ILI9488::Reset() {
     Gpio::Reset<4>(GPIOA);
     Delay::Set(10);
@@ -49,6 +44,7 @@ void ILI9488::SendDataBuffer (uint8_t* buffer, uint16_t size) {
 
 void ILI9488::Init() {
     InitPort();
+    Spi::Init();
     Reset();
 
     SendCommand(Command::SWRESET);

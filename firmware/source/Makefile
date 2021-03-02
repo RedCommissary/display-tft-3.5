@@ -39,7 +39,6 @@ CXX_SOURCES = \
 system/startup/startupF401.cpp \
 application/src/main.cpp \
 application/src/Application.cpp \
-library/bsp/src/Periphery.cpp \
 library/bsp/src/Delay.cpp \
 library/drivers/ili9488/ili9488.cpp \
 application/src/Display.cpp
