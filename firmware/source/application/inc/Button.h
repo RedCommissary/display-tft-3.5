@@ -1,7 +1,7 @@
 /********************************************************************************
  * class        Settings external button of keyboard                            *
  *                                                                              *
- * file         Button.h                                                       *
+ * file         Button.h                                                        *
  * author       @RedCommissary                                                  *
  * date         12.02.2021                                                      *
  *                                                                              *

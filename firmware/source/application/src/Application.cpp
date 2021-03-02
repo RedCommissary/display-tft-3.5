@@ -23,6 +23,9 @@ void Application::Init() {
     TFT.Init();
     TFT.Background(Color::Purple);
     TFT.SetBrightness(80);
+
+    char text[] = "IT'S COMMUNISM TIME";
+    TFT.Display::DrawString(150, 130, text, SevenSegment24, Color::Green, Color::Purple);
 }
 
 /********************************************************************************

@@ -36,18 +36,27 @@ void Display::Background (uint16_t color){
     ILI9488::DrawFill(0, 0, width, height, color);
 }
 
-void Display::DrawChar(uint16_t xPosition, uint16_t yPosition, char symbol, const typeFont* font, uint16_t colorText, uint16_t colorBackground){
-    	uint8_t *dataFont = (const_cast<uint8_t*>(font->chars) + symbol - 32)->image->buffChar;
-	    uint16_t width = (font->chars + symbol - 32)->image->widthChar;
-	    uint16_t height = (font->chars + symbol - 32)->image->heightChar;
+uint32_t Display::DrawChar(uint32_t xPosition, uint32_t yPosition, char symbol, const typeFont &font, uint16_t colorText, uint16_t colorBackground){
+	uint16_t width = (font.chars + symbol - 32)->image->widthChar;
+	uint16_t height = (font.chars + symbol - 32)->image->heightChar;
+    const uint8_t* chars = font.chars[symbol - 32].image->buffChar;
 
-
-    	for (uint32_t line = 0; line < height; line++) {
-            for (uint32_t pixel = 0; pixel < width; pixel++) {
-                uint16_t color = (*dataFont++ == 0x00) ? colorBackground : colorText;
-                DrawPixel(xPosition+pixel, yPosition+line, color);
-            }
+    volatile uint16_t i = 0;
+    for (uint32_t line = 0; line < height; line++) {
+        for (uint32_t pixel = 0; pixel < width; pixel++) {
+            uint16_t color = (chars[i++] == 0x00) ? colorText : colorBackground;
+            DrawPixel(xPosition+pixel, yPosition+line, color);
         }
+    }
+
+    return (xPosition + width);
+}
+
+void Display::DrawString(uint32_t xPosition, uint32_t yPosition, char *str, const typeFont &font, uint16_t colorText, uint16_t colorBackground){
+
+    while(*str){
+		xPosition = DrawChar(xPosition, yPosition, *str++, font, colorText, colorBackground);
+    }
 }
 
 // drawString(10, 10, "14.268.140", &SevenSegment_low, YELLOW);

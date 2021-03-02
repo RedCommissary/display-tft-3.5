@@ -29,7 +29,8 @@ class Display {
         void SetBrightness(uint16_t level);
         void BacklightDisable();
         void Background(uint16_t color);
-        void DrawChar(uint16_t xPosition, uint16_t yPosition, char symbol, const typeFont* font, uint16_t colorText, uint16_t colorBackground);
+        uint32_t DrawChar(uint32_t xPosition, uint32_t yPosition, char symbol, const typeFont &font, uint16_t colorText, uint16_t colorBackground);
+        void DrawString(uint32_t xPosition, uint32_t yPosition, char *str, const typeFont &font, uint16_t colorText, uint16_t colorBackground);
     
     private:
         static constexpr uint16_t width = 480;
