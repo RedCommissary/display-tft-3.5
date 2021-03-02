@@ -23,7 +23,7 @@
 class Display {
     public:
         void Init();
-        void DrawPixel(uint16_t x, uint16_t y, uint16_t color);
+        void DrawPixel (uint16_t x, uint16_t y, uint16_t color);
         void DrawLine (uint16_t xStart, uint16_t yStart, uint16_t length, uint16_t color);
         void DrawFill (uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t yEnd, uint16_t color);
         void Background (uint16_t color);

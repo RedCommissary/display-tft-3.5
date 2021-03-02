@@ -17,10 +17,18 @@
 
 /********************************************************************************
  * Class SPI
+ * 
+ * PA5 - SCK
+ * PA6 - MISO
+ * PA7 - MOSI
+ * PB1 - CS
  ********************************************************************************/
 class Spi {
     public:
         static void Init() {
+            Gpio::Init<5,6,7>(GPIOA, Gpio::Mode::outputAF, Gpio::Type::PP, Gpio::Speed::medium, Gpio::Pupd::noPull, Gpio::AF::af5);
+            Gpio::Init<1>(GPIOB, Gpio::Mode::output, Gpio::Type::PP);
+
             RCC->APB2ENR |= RCC_APB2ENR_SPI1EN;
 
             SPI1->CR1 = 0;

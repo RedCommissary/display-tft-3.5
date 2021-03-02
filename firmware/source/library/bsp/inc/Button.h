@@ -14,6 +14,7 @@
  ********************************************************************************/
 
 #include "stm32f4xx.h"
+#include "Gpio.h"
 
 /********************************************************************************
  * Class Button
@@ -27,6 +28,9 @@
 class Button {
     public:
         static void Init() {
+            Gpio::Init<0,1>(GPIOH, Gpio::Mode::input);
+            Gpio::Init<13,14,15>(GPIOC, Gpio::Mode::input);
+
             RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;
 
             SYSCFG->EXTICR[0] |= SYSCFG_EXTICR1_EXTI0_PH;  // Connect PH0 with EXTI

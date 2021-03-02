@@ -6,7 +6,16 @@
 
 /********************************************************************************
  * Method TFT ILI9488
+ * 
+ * Use - SPI1 (Master)
+ * PB0 - Command or data
+ * PA4 - Reset
  ********************************************************************************/
+void ILI9488::InitPort() {
+    Gpio::Init<0>(GPIOB, Gpio::Mode::output, Gpio::Type::PP);
+    Gpio::Init<3,4>(GPIOA, Gpio::Mode::output, Gpio::Type::PP);
+}
+
 void ILI9488::LedEnable (bool status) {
     if (status) {Gpio::Set<3>(GPIOA);}
     if (!status) {Gpio::Reset<3>(GPIOA);}
@@ -39,6 +48,7 @@ void ILI9488::SendDataBuffer (uint8_t* buffer, uint16_t size) {
 }
 
 void ILI9488::Init() {
+    InitPort();
     Reset();
 
     SendCommand(Command::SWRESET);

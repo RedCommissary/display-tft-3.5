@@ -13,7 +13,7 @@
  * Include 
  ********************************************************************************/
 
-#include "Pinout.h"
+#include "Gpio.h"
 
 /********************************************************************************
  * Class Buzzer
@@ -21,7 +21,10 @@
 class Buzzer {
     public:
         static void Init (uint16_t frequence) {
-            RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;     
+            Gpio::Init<2>(GPIOA, Gpio::Mode::outputAF, Gpio::Type::PP, Gpio::Speed::medium, Gpio::Pupd::noPull, Gpio::AF::af1);
+
+            RCC->APB1ENR |= RCC_APB1ENR_TIM2EN; 
+
             TIM2->PSC = 42-1;
             TIM2->ARR = frequence;
             TIM2->CCR3 = 0;

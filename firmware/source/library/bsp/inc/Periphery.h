@@ -15,7 +15,6 @@
 
 #include "startupF401.h"
 
-#include "Pinout.h"
 #include "Clock.h"
 #include "Delay.h"
 

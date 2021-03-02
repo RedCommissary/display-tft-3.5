@@ -13,7 +13,7 @@
  * Include 
  ********************************************************************************/
 
-#include "Pinout.h"
+#include "Gpio.h"
 
 /********************************************************************************
  * Class Led
@@ -21,6 +21,10 @@
 class Led {
     public:
         enum class Status {on, off, toggle};
+
+        static void Init() {
+            Gpio::Init<4,5>(GPIOB, Gpio::Mode::output);
+        }
 
         static void Yellow (Status status) {
                 switch (status) {

@@ -8,10 +8,10 @@
  * Methods Periphery
  ********************************************************************************/
 void Periphery::Init() {
-    Pinout::Init();
     Clock::Init();
     Delay::Init();
 
+    Led::Init();
     Button::Init();
     Buzzer::Init(1000);
     Spi::Init();
