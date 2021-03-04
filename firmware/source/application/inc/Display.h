@@ -16,7 +16,6 @@
 
 #include "ili9488.h"
 #include "Color.h"
-#include "Backlight.h"
 
 #include "fontSegment24.h"
 
@@ -27,7 +26,6 @@ class Display {
     public:
         void Init();
         void SetBrightness(uint16_t level);
-        void BacklightDisable();
         void Background(uint16_t color);
         uint32_t DrawChar(uint32_t xPosition, uint32_t yPosition, char symbol, const typeFont &font, uint16_t colorText, uint16_t colorBackground);
         void DrawString(uint32_t xPosition, uint32_t yPosition, char *str, const typeFont &font, uint16_t colorText, uint16_t colorBackground);

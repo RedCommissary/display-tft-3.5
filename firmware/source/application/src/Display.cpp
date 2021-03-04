@@ -9,15 +9,10 @@
  ********************************************************************************/
 void Display::Init() {
     ILI9488::Init();
-    Backlight::Init();
 }
 
 void Display::SetBrightness(uint16_t level){
-    Backlight::SetBrightness(level);
-}
-
-void Display::BacklightDisable(){
-    Backlight::Disable();
+    ILI9488::SetBrightness(level);
 }
 
 void Display::DrawPixel(uint16_t x, uint16_t y, uint16_t color){
