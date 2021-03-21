@@ -21,7 +21,6 @@
 #include "Led.h"
 #include "Buzzer.h"
 #include "Button.h"
-#include "Display.h"
 
 /********************************************************************************
  * Class Application

@@ -13,6 +13,8 @@
                 "${workspaceRoot}\\library\\cmsis\\**",
                 "${workspaceRoot}\\library\\drivers\\**",
                 "${workspaceRoot}\\library\\gui\\**",
+                "${workspaceRoot}\\library\\gui\\lvgl\\**",
+                "${workspaceRoot}\\library\\gui\\lv_examples\\**",
                 "${workspaceRoot}\\library\\system\\**",
                 "${workspaceRoot}\\system\\startup\\**"
             ],

@@ -8,8 +8,6 @@
  * User variables
  ********************************************************************************/
 
-Display TFT;
-
 /********************************************************************************
  * Methods class 
  ********************************************************************************/
@@ -19,13 +17,6 @@ void Application::Init() {
     Led::Init();
     Button::Init();
     Buzzer::Init(1000);
-
-    TFT.Init();
-    TFT.Background(Color::Purple);
-    TFT.SetBrightness(80);
-
-    char text[] = "IT'S COMMUNISM TIME";
-    TFT.Display::DrawString(150, 130, text, SevenSegment24, Color::Green, Color::Purple);
 }
 
 /********************************************************************************
